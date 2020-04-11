@@ -1,0 +1,23 @@
+<project xmlns:jacoco="antlib:org.jacoco.ant" name="Dump JaCoCo" default="dump">
+    <!--Jacoco ant lib的安装路径-->
+    <property name="jacoco.ant.lib" location="./lib/jacocoant.jar"/>
+    <!--最终生成.exec文件的路径，Jacoco就是根据这个文件生成最终的报告的-->
+    <property name="result.exec.file" location="./jacoco.exec"/>
+    <!--远程tomcat服务的ip地址-->
+    <property name="jacoco.server.address" value="127.0.0.1"/>
+    <!--远程tomcat服务中jacoco的端口-->
+    <property name="jacoco.server.port" value="8888"/>
+    <taskdef uri="antlib:org.jacoco.ant" resource="org/jacoco/ant/antlib.xml">
+        <classpath path="${jacoco.ant.lib}"/>
+    </taskdef>
+    <!--dump任务：
+    根据配置的ip地址和端口号，访问目标tomcat服务，并生成.exec文件。
+    其中：
+    reset=true时，会在dump出exec文件后，清空覆盖率数据；
+    append=false时，dump出的exec文件会覆盖原有的exec文件；
+    append=true时，dump出的exec文件追加至原有的exec文件；
+    -->
+    <target name="dump">
+        <jacoco:dump address="${jacoco.server.address}" port="${jacoco.server.port}" reset="true" destfile="${result.exec.file}" append="true"/>
+    </target>
+</project>
