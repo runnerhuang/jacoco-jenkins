@@ -4,7 +4,7 @@
     <!--最终生成.exec文件的路径，Jacoco就是根据这个文件生成最终的报告的-->
     <property name="result.exec.file" location="./jacoco.exec"/>
     <!--远程tomcat服务的ip地址-->
-    <property name="jacoco.server.address" value="127.0.0.1"/>
+    <property name="jacoco.server.address" value="172.17.0.2"/>
     <!--远程tomcat服务中jacoco的端口-->
     <property name="jacoco.server.port" value="8888"/>
     <taskdef uri="antlib:org.jacoco.ant" resource="org/jacoco/ant/antlib.xml">
